@@ -1,7 +1,9 @@
 from .models import Product
 from faker import Faker
 import random
+from celery import shared_task
 
+@shared_task
 def create_dynamic_product(size):
     fake = Faker()
 

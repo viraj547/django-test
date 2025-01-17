@@ -31,7 +31,8 @@ class GenerateDynamicProductViewSet(APIView):
             # breakpoint()
             data = serializer.data
             size = data['product_size']
-            create_dynamic_product(size)
+            # create_dynamic_product(size)
+            create_dynamic_product.delay(size)
 
             return Response({'msg':'success' }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
